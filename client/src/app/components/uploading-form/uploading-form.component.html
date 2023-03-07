@@ -1,22 +1,35 @@
-<form class="file-upload-form">
+<form
+  class="file-upload-form"
+  [formGroup]="filesUploadForm"
+  (ngSubmit)="onUploadFormSubmit()"
+>
   <mat-form-field class="full-width">
     <mat-label>Email</mat-label>
     <input
       type="email"
       matInput
-      [formControl]="emailFormControl"
+      formControlName="email"
       placeholder="Enter a valid email"
     />
     <mat-error
       *ngIf="
-        emailFormControl.hasError('email') &&
-        !emailFormControl.hasError('required')
+        filesUploadForm.get('email')?.hasError('email') &&
+        !filesUploadForm.get('email')?.hasError('required')
       "
     >
       Please enter a valid email address
     </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
+    <mat-error *ngIf="filesUploadForm.get('email')?.hasError('required')">
       Email is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="(filesUploadForm.statusChanges | async) != 'VALID'"
+  >
+    Upload
+  </button>
 </form>

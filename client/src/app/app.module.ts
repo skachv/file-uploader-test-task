@@ -8,6 +8,7 @@ import { UploadingFormComponent } from './components/uploading-form/uploading-fo
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent, UploadingFormComponent],
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

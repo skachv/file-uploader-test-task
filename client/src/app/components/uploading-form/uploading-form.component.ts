@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-uploading-form',
@@ -8,8 +8,13 @@ import { FormControl, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadingFormComponent {
-  public emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  constructor(private formBuilder: FormBuilder) {}
+
+  public filesUploadForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+  });
+
+  public onUploadFormSubmit(): void {
+    // TODO: add form submission
+  }
 }
